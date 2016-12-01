@@ -3,8 +3,6 @@ __author__ = 'qingfengsheng'
 
 import json
 
-from pyltp import Segmentor
-
 from lib.ltp import Ltp
 from lib.util import *
 

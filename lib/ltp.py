@@ -11,6 +11,7 @@ class Ltp(object):
 		print 'Ltp:: __init__'
 		self.segmentor = Segmentor()
 		self.segmentor.load('model/cws.model')
+		self.lexicon = None
 	# end
 
 	def load_lexicon(self, path):
