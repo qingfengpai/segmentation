@@ -7,7 +7,7 @@ class Lexicon(object):
 	"""docstring for Lexicon"""
 	def __init__(self, path):
 		print 'Lexicon:: __init__'
-		self.dict = util.read(path)
+		self.dict = util.read_file(path)
 		print 'Lexicon:: __init__ done'
 	# end
 

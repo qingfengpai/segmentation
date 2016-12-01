@@ -4,3 +4,4 @@
 # model文件
 model
 
+*.pyc

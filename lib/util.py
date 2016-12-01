@@ -2,9 +2,10 @@
 __author__ = 'qingfengsheng'
 
 import os
+import json
 
 # 读取文件
-def read(path):
+def read_file(path):
 	if not os.path.isfile(path):
 		raise UserWarning("file donot exist")
 		return False
@@ -14,9 +15,17 @@ def read(path):
 	return lines
 # end
 
-# 输出文本到文件
-def output(path, content):
-	f = open(path, 'w')
-	f.write(content)
+def check_path(path):
+	""" 检查路径是否存在。makedirs: 包含子文件夹 """
+	if not os.path.exists(path):
+		os.makedirs(path)
+# end check_path
+
+def output_v1(path, name, text):
+	""" 输出 response 内容到文件 """
+	check_path(path)
+	file = str(path) + '/' + str(name)
+	f = open(file, 'w')
+	f.write(text)
 	f.close()
-# end
+# end output
