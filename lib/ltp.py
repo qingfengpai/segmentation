@@ -51,6 +51,40 @@ class Ltp(object):
 		return content
 	# end
 
+	def sentence_cut_to_words(self, sentence, tab_index=0):
+		"""
+		把一句话分词，先不考虑专有名词
+		"""
+		print 'Ltp:: sentence_cut_to_words'
+		sentence = sentence.strip()
+		if sentence == "":
+			return False
+		text = sentence.split('\t')
+		if len(text) < tab_index + 1:
+			return False
+		text = text[tab_index]
+
+		words_line = ""
+		words_list = self.segmentor.segment(text)
+		for word in words_list:
+			words_line += word + " "
+		return words_line
+	# end
+
+	def article_cut_to_words(self, article, tab_index=0):
+		""" 把一个文本文件分词
+		@params article 是file读取的文本数据
+		"""
+		print 'Ltp:: article_cut_to_words'
+		content = ""
+		for line in article:
+			sentence = self.sentence_cut_to_words(line, tab_index)
+			if sentence is False:
+				continue
+			content += sentence + "\n"
+		return content
+	# end
+
 	def get_word_freq(self, words_list):
 		""" 统计词频
 		@params <list> words_list 词列表
